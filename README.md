@@ -313,3 +313,92 @@ print(template.invoke({"msgs": [HumanMessage(content="Hi!")]}))
 
 ---
 
+
+
+### 5. **What are Output Parsers?**
+
+Output parsers take the **text output** from a language model and transform it into a **structured format** like JSON, CSV, or a Python object. This is helpful when:
+- You need **structured data** for downstream tasks.
+- You want to **normalize outputs** from language models.
+
+
+
+ **Key Features of Output Parsers**
+
+| **Feature**                | **What It Does**                                                                 | **Why It’s Useful**                              |
+|----------------------------|----------------------------------------------------------------------------------|------------------------------------------------|
+| **Transforms Output**      | Converts raw text from a model into a structured format.                         | Makes it easier to work with model-generated data. |
+| **Supports Formats**       | Handles formats like JSON, XML, CSV, and more.                                  | Lets you use data in the format you need.        |
+| **Error Correction**       | Some parsers can fix or retry bad outputs using an LLM.                          | Ensures reliable results.                        |
+
+
+
+ **Why Use Output Parsers?**
+- **Structured Data**: Ideal for tasks like creating JSON objects or tables.
+- **Flexibility**: Works with both text and message-based inputs.
+- **Error Handling**: Automatically fixes or retries bad outputs with certain parsers.
+
+
+
+**Common Output Parsers**
+
+| **Name**            | **Supports Streaming** | **Output Type**            | **When to Use**                                                                 |
+|---------------------|------------------------|----------------------------|--------------------------------------------------------------------------------|
+| **JSON**            | ✅                     | JSON object                | Best for structured data in JSON format (e.g., APIs or databases).             |
+| **XML**             | ✅                     | Dictionary of tags         | When you need XML output (works well with Anthropic models).                   |
+| **CSV**             | ✅                     | List of strings            | For creating or handling CSV-like outputs.                                     |
+| **OutputFixing**     |                      | Depends on wrapped parser  | Fixes errors by asking an LLM to correct bad outputs.                          |
+| **RetryWithError**   |                      | Depends on wrapped parser  | Fixes errors with additional context, like original instructions.              |
+| **Pydantic**        |                      | Pydantic model             | For output in a user-defined Python Pydantic model format.                     |
+| **YAML**            |                      | Pydantic model             | Similar to Pydantic but encoded in YAML format.                                |
+| **PandasDataFrame** | ✅                     | Pandas DataFrame           | For tasks requiring structured data in DataFrame format.                       |
+| **Enum**            |                      | Enum                       | Converts responses into one of several predefined categories.                  |
+| **Datetime**        |                      | Datetime object            | For outputs in date/time format.                                               |
+| **Structured**      |                      | Dictionary of strings      | Simple parser for smaller LLMs, only supports string fields.                   |
+
+
+
+**How Output Parsers Work**
+
+1. **Input**: Raw text or message from a language model.
+2. **Processing**: The parser transforms the output into the desired format (e.g., JSON, CSV).
+3. **Output**: A structured result ready for downstream tasks.
+
+
+**When to Avoid Output Parsers**
+- If your model supports **function/tool calling**, use that instead. Function calling is often more reliable and automatic for structured outputs.
+
+
+**Examples of Use**
+
+**JSON Output**
+Convert model output into JSON.
+
+```python
+from langchain_core.output_parsers import JSONOutputParser
+
+parser = JSONOutputParser()
+output = parser.parse("Output: {'name': 'John', 'age': 30}")
+# Output: {'name': 'John', 'age': 30}
+```
+
+**CSV Output**
+Create a list of comma-separated values.
+
+```python
+from langchain_core.output_parsers import CSVOutputParser
+
+parser = CSVOutputParser()
+output = parser.parse("Output: name,age\nJohn,30")
+# Output: ['name,age', 'John,30']
+```
+
+
+**Key Takeaways**
+- Output parsers are ideal for turning unstructured text into usable formats.
+- Choose the parser based on your **desired format** (e.g., JSON, CSV, Pandas).
+- Use **function/tool calling** if supported by your model for better reliability.
+
+---
+
+This version is comprehensive yet simplified, making it beginner-friendly while covering all the essential details about output parsers.
