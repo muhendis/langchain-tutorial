@@ -175,3 +175,59 @@ Here’s an even simpler and clearer version of the table:
 5. **FunctionMessage**: Old method for showing tool results; avoid using this.
 
 This table uses simple terms and focuses on “who, what, when” with basic examples to make it beginner-friendly.
+
+---
+
+## 3.  **What are LLMs?**
+
+LLMs (Language Models) are AI tools that take **text as input** and give **text as output**. They’re great for tasks like writing, summarizing, or answering questions.
+
+
+
+ **Key Features**
+
+| **Feature**             | **What It Does**                                                   | **Why It’s Useful**                          |
+|-------------------------|-------------------------------------------------------------------|---------------------------------------------|
+| **Text Input/Output**   | You give it text, and it gives you text back.                     | Great for simple tasks like generating ideas or summaries. |
+| **Works with Messages** | In LangChain, LLMs can handle chat-style messages, too.           | Makes them flexible for different workflows. |
+| **Third-Party Models**  | LangChain connects to AI providers like OpenAI.                  | Lets you use powerful, well-known models.    |
+
+
+
+ **LLMs vs. Chat Models**
+
+| **LLMs**                          | **Chat Models**                          |
+|-----------------------------------|------------------------------------------|
+| Work with plain text.             | Work with chat-style messages.           |
+| Better for simple tasks.          | Better for conversations or workflows.   |
+| Often older technology.           | Newer and more advanced technology.      |
+
+
+
+ **Why Use LLMs?**
+- For simple tasks like:
+  - Writing text.
+  - Summarizing content.
+  - Answering questions.
+- When you don’t need advanced conversation handling.
+
+
+
+ **How LangChain Improves LLMs**
+- **Chat Compatibility**: LLMs can handle messages as if they’re chat models.
+- **Third-Party Integration**: Connects to top providers like OpenAI.
+- **Unified Tools**: Makes LLMs and Chat Models work in the same way.
+
+
+
+ **Important Note**
+Most newer AI tools are **Chat Models**, which are better for modern tasks. If you’re unsure, Chat Models might be a better fit.
+
+
+ **How to Start**
+1. Choose a model from providers like OpenAI.
+2. Use LangChain to connect and enhance it.
+3. Focus on simple, text-based tasks.
+
+---
+
