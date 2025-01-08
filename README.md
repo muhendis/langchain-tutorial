@@ -1,4 +1,8 @@
 
+chatgpt devam edilecek yer : https://chatgpt.com/c/677ec47d-e268-8001-ba57-ae76a1c3bf07
+tools'da kaldık. https://python.langchain.com/v0.2/docs/concepts/#tools
+en son bunu oku : https://github.com/langchain-ai/langchain-academy/blob/main/module-0/basics.ipynb
+
 # A. General
 
 ## 1. **LangChain Architecture Overview**
