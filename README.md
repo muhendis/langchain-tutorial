@@ -816,4 +816,77 @@ print(retrieved_docs)
 - They support **metadata filtering** for more control over results.
 - You can easily convert them into **retrievers** for seamless integration in LangChain workflows.
 
-This clear and concise explanation makes vector stores easy to understand while showing how they fit into practical AI applications.
+---
+
+### **12. What are Retrievers in LangChain?**
+
+Retrievers are tools that **return relevant documents** based on an **unstructured query**. They are a more general interface than vector stores and can work with a variety of data sources, not just embedded vectors.
+
+
+**Key Features of Retrievers**
+
+| **Feature**             | **What It Does**                                               | **Why It’s Useful**                              |
+|-------------------------|--------------------------------------------------------------|------------------------------------------------|
+| **General Interface**   | Accepts a query and returns a list of relevant documents.      | Works with many data sources, not limited to vector stores. |
+| **Input and Output**     | Takes a **string query** and returns a list of **Document objects**. | Simple and standardized retrieval process.     |
+| **Broad Use Cases**      | Can include tools like Wikipedia search, Amazon Kendra, or vector stores. | Flexible for different types of data retrieval. |
+
+
+
+**How Retrievers Work**
+
+1. **Input Query**: Accepts a string query (e.g., "What is LangChain?").
+2. **Retrieve Data**: Searches for relevant documents using the specified retrieval method.
+3. **Return Documents**: Outputs a list of **Document objects** containing the results.
+
+
+
+**Example Workflow**
+
+**a. Using a Retriever with a Vector Store**
+```python
+from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
+
+# Initialize embedding model and vector store
+embedding_model = OpenAIEmbeddings()
+vector_store = FAISS()
+
+# Convert vector store to a retriever
+retriever = vector_store.as_retriever()
+
+# Retrieve relevant documents for a query
+results = retriever.get_relevant_documents("What is LangChain?")
+for doc in results:
+    print(doc.page_content)
+```
+
+
+**b. Using a Retriever for Wikipedia Search**
+```python
+from langchain.retrievers import WikipediaRetriever
+
+# Initialize Wikipedia retriever
+retriever = WikipediaRetriever()
+
+# Retrieve documents
+results = retriever.get_relevant_documents("LangChain AI framework")
+for doc in results:
+    print(doc.page_content)
+```
+
+
+**When to Use Retrievers**
+
+- **Flexible Data Sources**: Use for searches over both vector stores and external sources like Wikipedia.
+- **Unstructured Queries**: When you need to find documents that match natural language queries.
+- **Context Retrieval**: Provide relevant context to a language model for better responses.
+
+
+**Key Takeaways**
+
+- **Retrievers** are versatile tools for fetching relevant documents.
+- They accept a **string query** and return **Document objects**.
+- They can be used with **vector stores** or external tools like **Wikipedia** and **Amazon Kendra**.
+
+This explanation simplifies the concept of retrievers while showing how they work and their importance in LangChain workflows.
