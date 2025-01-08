@@ -644,3 +644,83 @@ print(chunks)
 - They are customizable for different splitting methods and chunk sizes.
 - Adding **overlap** ensures chunks retain context, improving downstream AI performance.
 
+---
+
+### 10. **What are Embedding Models in LangChain?**
+
+Embedding models transform **text into vectors**, which are arrays of numbers that capture the **semantic meaning** of the text. These vectors enable operations like searching for similar text, making them crucial for tasks like **context retrieval**.
+
+
+ **Why Use Embedding Models?**
+
+1. **Semantic Understanding**: Converts text into a mathematical form that captures meaning.
+2. **Natural Language Search**: Finds text pieces most similar to a given query.
+3. **Improved Context Retrieval**: Helps provide relevant data to language models for better responses.
+
+
+**How Embedding Models Work**
+
+1. **Input Text**: A piece of text (e.g., a query or a document).
+2. **Vector Representation**: The model creates a vector (array of numbers) that represents the text's meaning.
+3. **Similarity Search**: Compare vectors mathematically to find similar text.
+
+
+
+**Key Features of the `Embeddings` Class**
+
+| **Feature**                | **What It Does**                                                                 | **Why It’s Useful**                              |
+|----------------------------|----------------------------------------------------------------------------------|------------------------------------------------|
+| **Document Embedding**     | Converts multiple texts (e.g., documents) into vectors.                          | For building searchable text databases.         |
+| **Query Embedding**        | Converts a single query into a vector.                                           | For searching against embedded documents.       |
+| **Standardized Interface** | Works with multiple providers like OpenAI, Cohere, Hugging Face, and local models.| Easy to switch between embedding providers.     |
+
+
+
+ **Example Workflow**
+
+ **a. Embedding a Document**
+```python
+from langchain.embeddings import OpenAIEmbeddings
+
+# Initialize the embedding model
+embedding_model = OpenAIEmbeddings()
+
+# Embed multiple documents
+documents = ["LangChain is great for AI workflows.", "Embedding models capture text meaning."]
+document_vectors = embedding_model.embed_documents(documents)
+
+print(document_vectors)
+# Output: [Vector representation of each document]
+```
+
+ **b. Embedding a Query**
+```python
+# Embed a single query
+query = "What is LangChain?"
+query_vector = embedding_model.embed_query(query)
+
+print(query_vector)
+# Output: [Vector representation of the query]
+```
+
+
+
+ **Why Separate Document and Query Methods?**
+- **Document Embedding**: For building a database of searchable text.
+- **Query Embedding**: For creating a vector to compare against those documents.
+
+
+
+ **When to Use Embedding Models**
+- **Search Applications**: To find the most relevant text for a user query.
+- **Context Retrieval**: Provide additional data to a language model for better answers.
+- **Clustering and Categorization**: Group similar documents or queries.
+
+
+
+ **Key Takeaways**
+- **Embedding Models** turn text into vectors that represent meaning.
+- LangChain’s **Embeddings class** provides a standard interface for different providers.
+- Separate methods for **documents** and **queries** ensure flexibility and precision.
+
+This explanation simplifies embedding models while showing their practical usage and importance in LangChain workflows.
