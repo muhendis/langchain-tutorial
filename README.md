@@ -231,3 +231,85 @@ Most newer AI tools are **Chat Models**, which are better for modern tasks. If y
 
 ---
 
+
+### 4. **What are Prompt Templates?**
+
+Prompt Templates are tools that help you create clear instructions for AI models. They take your inputs, organize them, and turn them into something the AI can understand.
+
+
+
+### **How Prompt Templates Work**
+
+1. **Input**: You provide variables (like `{"topic": "cats"}`).
+2. **Process**: The template fills in the blanks with your variables.
+3. **Output**: It produces a prompt ready for the AI to use.
+
+
+
+ **Types of Prompt Templates**
+
+| **Type**               | **What It Does**                                     | **Example**                                   |
+|------------------------|-----------------------------------------------------|----------------------------------------------|
+| **String Prompt**      | Formats a single sentence.                          | *"Tell me a joke about {topic}"*             |
+| **Chat Prompt**        | Formats multiple messages for a conversation.       | System and user roles with dynamic content.  |
+| **MessagesPlaceholder**| Lets you insert a list of messages dynamically.     | Add several messages into a conversation.    |
+
+
+
+**Examples**
+
+**a. Simple String Prompt**
+For single-line prompts.
+
+```python
+from langchain_core.prompts import PromptTemplate
+
+template = PromptTemplate.from_template("Tell me a joke about {topic}")
+print(template.invoke({"topic": "cats"}))
+# Output: "Tell me a joke about cats"
+```
+
+ **b. Chat Prompt**
+For multi-message conversations.
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    ("user", "Tell me a joke about {topic}")
+])
+
+print(template.invoke({"topic": "cats"}))
+# Output: [{"role": "system", "content": "You are a helpful assistant."},
+#          {"role": "user", "content": "Tell me a joke about cats"}]
+```
+
+
+
+**c. MessagesPlaceholder**
+To insert a dynamic list of messages.
+
+```python
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.messages import HumanMessage
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    MessagesPlaceholder("msgs")
+])
+
+print(template.invoke({"msgs": [HumanMessage(content="Hi!")]}))
+# Output: [{"role": "system", "content": "You are a helpful assistant."},
+#          {"role": "user", "content": "Hi!"}]
+```
+
+
+
+ **Why Use Prompt Templates?**
+- **Simple**: Easily create clear instructions for AI.
+- **Flexible**: Handle single-line or multi-message inputs.
+- **Reusable**: Use the same template with different inputs.
+
+---
+
