@@ -518,9 +518,8 @@ print(doc.metadata)
 
 Document Loaders are tools that help you **load data** from various sources and convert it into **Document objects**. These are essential for integrating data from external systems like Slack, Notion, Google Drive, and many more into LangChain workflows.
 
----
 
-### **How Document Loaders Work**
+ **How Document Loaders Work**
 
 1. **Connect to a Data Source**: Each loader is designed for a specific type of source (e.g., CSV files, APIs, databases).
 2. **Load Data**: Use the `.load()` method to fetch and transform data into **Document objects**.
