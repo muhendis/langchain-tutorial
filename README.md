@@ -1,7 +1,7 @@
 
 # A. General
 
-## 0. **LangChain Architecture Overview**
+## 1. **LangChain Architecture Overview**
 
 
  **Core Packages**
@@ -48,7 +48,7 @@
 4. **Debugging**: Monitor the API’s performance using **LangSmith**.
 
 ---
-## 1. **What is LangChain Expression Language (LCEL)?**
+## 2. **What is LangChain Expression Language (LCEL)?**
 
 
 LCEL is a **declarative way** to connect different LangChain components into powerful workflows. It allows you to build everything from simple AI workflows (e.g., "prompt + LLM") to highly complex ones with hundreds of steps—all ready for production with no code changes.
