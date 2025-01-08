@@ -1,4 +1,5 @@
-# langchain-tutorial
+
+# A. General
 
 ## 0. **LangChain Architecture Overview**
 
@@ -117,6 +118,9 @@ LCEL is a **declarative way** to connect different LangChain components into pow
 
 
 ---
+
+# B. Components
+
 ## 1. **What Are Chat Models?**
 
 Chat models are **smart conversation tools**. Instead of just reading plain text, they understand **messages** and their roles, like:
