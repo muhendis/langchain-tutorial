@@ -569,4 +569,78 @@ for doc in documents:
 
 ---
 
-This beginner-friendly explanation simplifies the concept while highlighting how ChatHistory works in LangChain and why it’s useful.
+### 9. **What are Text Splitters in LangChain?**
+
+Text Splitters are tools that **break long pieces of text into smaller chunks**. These chunks are easier to process, especially when working with language models that have limited context windows. They also help retain meaning by grouping related pieces of text.
+
+
+
+ **Why Use Text Splitters?**
+
+1. **Handle Long Texts**: Breaks large documents into manageable pieces.
+2. **Preserve Meaning**: Keeps related information together for coherent processing.
+3. **Optimize Context**: Ensures chunks fit within the model’s input size.
+
+
+
+**How Text Splitters Work**
+
+1. **Split Into Small Pieces**: Break the text into small, meaningful chunks (e.g., by sentences or paragraphs).
+2. **Combine Into Larger Chunks**: Merge small chunks into larger pieces until a size limit is reached (measured by tokens, characters, etc.).
+3. **Add Overlap**: Create some overlap between chunks to maintain context between pieces.
+
+
+ **Customization Options**
+
+| **Customization**       | **What It Means**                                   | **Example**                                |
+|-------------------------|---------------------------------------------------|-------------------------------------------|
+| **How Text is Split**   | Choose how to break the text (e.g., by sentence, paragraph, or delimiter). | Split by sentences for narrative text.    |
+| **Chunk Size**          | Define the maximum size of each chunk (e.g., by tokens, characters, or sentences). | Use 500 tokens for LLM context limits.    |
+
+
+
+ **Example Workflow**
+
+ **a. Split by Sentence**
+```python
+from langchain.text_splitter import SentenceSplitter
+
+text = "LangChain is a framework for AI. It helps manage workflows. Splitting text is crucial!"
+splitter = SentenceSplitter()
+
+chunks = splitter.split_text(text)
+print(chunks)
+# Output: ["LangChain is a framework for AI.", "It helps manage workflows.", "Splitting text is crucial!"]
+```
+
+ **b. Chunk with Overlap**
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+text = "LangChain enables powerful AI workflows. Splitting text helps with context management."
+splitter = RecursiveCharacterTextSplitter(chunk_size=50, chunk_overlap=10)
+
+chunks = splitter.split_text(text)
+print(chunks)
+# Output: ["LangChain enables powerful AI workflows. Splitting text", "text helps with context management."]
+```
+
+
+
+ **Why Overlap Matters**
+- Ensures continuity between chunks.
+- Retains context across split pieces of text.
+
+
+ **When to Use Text Splitters**
+- **Long Documents**: To handle articles, books, or reports efficiently.
+- **Structured Data**: When working with texts that have logical groupings (e.g., headings, paragraphs).
+- **Token Constraints**: To fit within a language model's token limit.
+
+
+
+ **Key Takeaways**
+- **Text Splitters** break long texts into smaller, meaningful pieces.
+- They are customizable for different splitting methods and chunk sizes.
+- Adding **overlap** ensures chunks retain context, improving downstream AI performance.
+
