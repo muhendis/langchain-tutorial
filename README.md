@@ -462,4 +462,56 @@ print(all_messages)
 - **Integrated with LangChain**: Works seamlessly with chains to enhance conversation quality.
 - **Simple and Powerful**: Easy to use but critical for maintaining meaningful interactions.
 
+---
+
+### 7. **What are Documents in LangChain?**
+
+A **Document** in LangChain represents a piece of data, typically text-based, that the system can work with. It organizes this data into a structured object with two key attributes: **content** and **metadata**.
+
+
+**Key Attributes of a Document**
+
+| **Attribute**        | **What It Is**                                   | **Why It’s Useful**                               |
+|----------------------|-------------------------------------------------|-------------------------------------------------|
+| **`page_content`**   | The main content of the document as a string.    | Stores the actual text or information to work with. |
+| **`metadata`**       | A dictionary of additional information.         | Tracks details like document ID, file name, source, etc. |
+
+
+
+**How to Use a Document**
+
+**Example: Creating a Document**
+
+```python
+from langchain_core.schema import Document
+
+# Create a Document
+doc = Document(
+    page_content="LangChain is a framework for building AI applications.",
+    metadata={"doc_id": 1, "file_name": "intro.txt"}
+)
+
+# Access attributes
+print(doc.page_content)
+# Output: "LangChain is a framework for building AI applications."
+
+print(doc.metadata)
+# Output: {"doc_id": 1, "file_name": "intro.txt"}
+```
+
+
+ **Why Use Documents?**
+
+1. **Organized Data**: Separates content from metadata for better structure.
+2. **Flexible Metadata**: Attach any information, like IDs, sources, or timestamps.
+3. **Interoperable**: Works seamlessly with LangChain tools like retrievers and memory systems.
+
+
+
+ **Key Takeaways**
+- A **Document** stores text data and its associated metadata.
+- Use **`page_content`** for the main text and **`metadata`** for additional details.
+- Documents are the building blocks for handling data in LangChain.
+
+---
 This beginner-friendly explanation simplifies the concept while highlighting how ChatHistory works in LangChain and why it’s useful.
